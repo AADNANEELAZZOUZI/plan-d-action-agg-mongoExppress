@@ -14,17 +14,5 @@ printjson(db.loans.aggregate(pipeline).toArray());
 
 
 
-const pipeline2 = [
-  { $match: { status: "RETURNED" } },
-  { $lookup: {
-      from: "equipments",
-    localField: "equipmentId",
-    foreignField: "_id",
-    as: "equipment"
-  }},
-  { $unwind: "$equipment" },
-  { $match: { "equipment.archived": false } },
-  { $group: {
-    _id: "$equipment.category",
-    returnedLoanCount: { $sum: 1 },
+
     
