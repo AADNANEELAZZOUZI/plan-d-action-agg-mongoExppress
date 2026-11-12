@@ -1,0 +1,1 @@
+printjson(db.loans.aggregate([{ $match: { status: "RETURNED" } }, { $count: "n" }]).toArray());
