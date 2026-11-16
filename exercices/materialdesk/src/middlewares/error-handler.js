@@ -17,6 +17,6 @@ export function errorHandler(err, req, res, next) {
   if (err?.name === 'ValidationError' || err?.name === 'CastError') {
     return res.status(400).json({ error: { message: 'Données invalides' } });
   }
-  console.error(err); // la trace reste dans les logs serveur
+  console.error(err);
   res.status(500).json({ error: { message: 'Erreur interne' } }); // jamais de stack au client
 }
